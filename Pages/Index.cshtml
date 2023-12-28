@@ -1,0 +1,30 @@
+﻿@page
+@model PracticalAssignment.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>First Name: @Model.FirstName</p>
+    <p>Last Name: @Model.LastName</p>
+    <p>Email: @Model.Email</p>
+    <p>Mobile Number: @Model.MobileNo</p>
+    <p>Shipping Address: @Model.ShippingAddress</p>
+    <p>Billing Address: @Model.BillingAddress</p>
+    
+    
+    <p>Your credit card number is:@Model.DecryptedCreditCardNumber</p>
+
+
+
+
+    <p>Session stuff here:</p>
+    <p>UserName: @HttpContext.Session.GetString("UserName")</p>
+    <p>Session ID: @Model.SessionId</p>
+
+
+</div>

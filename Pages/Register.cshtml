@@ -1,0 +1,133 @@
+﻿@page
+@model PracticalAssignment.Pages.RegisterModel
+@{
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-sm-12 col-md-12 col-lg-4">
+            <h1 class="mb-3">Register</h1>
+            <form method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+
+                <div class="mb-3">
+                    <label class="form-label" asp-for="RModel.FirstName">First Name</label>
+                    <input type="text" asp-for="RModel.FirstName" class="form-control" />
+                    <span asp-validation-for="RModel.FirstName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" asp-for="RModel.LastName">Last Name</label>
+                    <input type="text" asp-for="RModel.LastName" class="form-control" />
+                    <span asp-validation-for="RModel.LastName" class="text-danger"></span>
+                </div>
+
+
+
+                <div class="mb-3">
+                    <label class="form-label" asp-for="RModel.MobileNo">Mobile Number</label>
+
+                    <div class="input-group">
+                        <span class="input-group-text">+65</span>
+                        <input type="tel" asp-for="RModel.MobileNo" class="form-control" />
+                    </div>
+
+  
+                    <span asp-validation-for="RModel.MobileNo" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" asp-for="RModel.BillingAddress">Billing Address</label>
+                    <input type="text" asp-for="RModel.BillingAddress" class="form-control" />
+                    <span asp-validation-for="RModel.BillingAddress" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" asp-for="RModel.ShippingAddress">Shipping Adddress</label>
+                    <input type="text" asp-for="RModel.ShippingAddress" class="form-control" />
+                    <span asp-validation-for="RModel.ShippingAddress" class="text-danger"></span>
+                </div>
+
+
+                @*not sure if like credit card shld be text or nah*@
+                <div class="mb-3">
+                    <label class="form-label" asp-for="RModel.CreditCardNo">Credit Card No</label>
+                    <input type="text" asp-for="RModel.CreditCardNo" class="form-control" />
+                    <span asp-validation-for="RModel.CreditCardNo" class="text-danger"></span>
+                </div>
+
+
+                <div class="mb-3">
+                    <label class="form-label" asp-for="RModel.Email">Email Address</label>
+                    <input type="email" asp-for="RModel.Email" class="form-control" />
+                    <span asp-validation-for="RModel.Email" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" asp-for="RModel.Password">Password</label>
+                    <input type="password" asp-for="RModel.Password" class="form-control" />
+                    <div id="password-strength"></div>
+                    <span asp-validation-for="RModel.Password" class="text-danger"></span>
+                </div>
+                @section Scripts {
+                    <partial name="_ValidationScriptsPartial" />
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            var passwordInput = document.getElementById('RModel_Password'); // Updated ID
+                            var passwordStrengthDisplay = document.getElementById('password-strength');
+
+                            if (passwordInput && passwordStrengthDisplay) {
+                                passwordInput.addEventListener('input', function () {
+                                    var password = this.value;
+                                    var strength = 0;
+
+                                    if (password.length >= 12) strength++;
+                                    if (/[A-Z]/.test(password)) strength++;
+                                    if (/\d/.test(password)) strength++;
+                                    if (/\W/.test(password)) strength++;
+
+                                    var strengthMessage = 'Weak Password'; // Default message
+                                    if (strength >= 3) {
+                                        strengthMessage = 'Moderate Password';
+                                    }
+                                    if (strength === 4) {
+                                        strengthMessage = 'Strong Password';
+                                    }
+
+                                    passwordStrengthDisplay.textContent = strengthMessage;
+                                });
+                            }
+                        });
+
+                    </script>
+
+
+
+                }
+
+
+
+
+                <div class="mb-3">
+                    <label class="form-label" asp-for="RModel.ConfirmPassword">Confirm Password</label>
+                    <input type="password" asp-for="RModel.ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="RModel.ConfirmPassword" class="text-danger"></span>
+                </div>
+
+                @* Add a file input for the photo upload if necessary
+                <div class="mb-3">
+                <label class="form-label" for="Photo">Photo</label>
+                <input type="file" class="form-control" name="Photo" />
+                </div> UHH NORMALLY IS IN ANOTHER FILE SO DO THAT LATER IG
+                *@
+
+
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

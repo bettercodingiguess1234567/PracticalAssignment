@@ -1,0 +1,61 @@
+﻿@page
+@model PracticalAssignment.Pages.LoginModel
+@{
+}
+
+
+<div class="container mt-5">
+
+	<div class="row justify-content-center align-items-center">
+
+		<div class="col-sm-12 col-md-12 col-lg-4">
+
+		
+
+			<h1 class="mb-3">Login </h1>
+
+			<div asp-validation-summary="All" class="text-danger"></div>
+
+
+			<form method="post">
+
+				<div class="mb-3">
+					<label class="form-label" asp-for="LModel.Email">Email Address</label>
+					<input type="Text" asp-for="LModel.Email" class="form-control" />
+					<span asp-validaton-for="LModel.Email" class="text-danger"></span>
+				</div>
+
+				<div class="mb-3">
+					<label class="form-label" asp-for="LModel.Password">Password</label>
+					<input type="password" asp-for="LModel.Password" class="form-control" />
+					<span asp-validaton-for="LModel.Password" class="text-danger"></span>
+				</div>
+
+				
+
+				<input type="hidden" id="recaptchaResponse" name="recaptcha_response">
+
+				<div class="mb-3">
+					<button type="submit" class="btn btn-primary">Login</button>
+				</div>
+
+				<div class="mb-3">
+					<a asp-page="/ForgotPassword">Forgot Password?</a>
+				</div>
+
+				<script src="https://www.google.com/recaptcha/api.js?render=6LdECzspAAAAAKeZcYtBrlocJZjmydOXUwnkfc0O"></script>
+				<script>
+					grecaptcha.ready(function () {
+						grecaptcha.execute('6LdECzspAAAAAKeZcYtBrlocJZjmydOXUwnkfc0O', { action: 'submit' }).then(function (token) {
+							var recaptchaResponse = document.getElementById('recaptchaResponse');
+							recaptchaResponse.value = token;
+						});
+					});
+				</script>
+				
+
+			</form>
+		</div>
+	</div>
+</div>
+

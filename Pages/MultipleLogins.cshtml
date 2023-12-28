@@ -1,0 +1,8 @@
+﻿@page
+@model PracticalAssignment.Pages.MultipleLoginsModel
+
+<h1>Multiple Logins Detected</h1>
+
+<p>@TempData["LoginErrorMessage"]</p>
+
+<p>Please <a asp-page="/Login">log in</a> again to continue after you logout from other sessions.</p>
